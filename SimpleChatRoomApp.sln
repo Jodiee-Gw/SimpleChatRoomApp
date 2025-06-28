@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36127.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChatRoomAppWebsocket", "SimpleChatRoomAppWebsocket\SimpleChatRoomAppWebsocket.csproj", "{55C21BE0-FA5A-420F-8328-045C1326253D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatroomChatForWebsocketClient", "ChatroomChatForWebsocketClient\ChatroomChatForWebsocketClient.csproj", "{4F8F23D7-F7D6-4882-8A25-E3EDB451AE36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectToOpenAi", "ConnectToOpenAi\ConnectToOpenAi.csproj", "{43A9DD05-ACC2-4081-AAE7-0FCA0955E916}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetInformFromExcel", "GetInformFromExcel\GetInformFromExcel.csproj", "{C5B4DC99-D76F-481D-AC32-BF7CDF8E9110}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectAPIAndAutomaticallyUpdateExcel", "ConnectAPIAndAutomaticallyUpdateExcel\ConnectAPIAndAutomaticallyUpdateExcel.csproj", "{6318B504-AB89-4AF7-989D-C4B79B3D1E9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55C21BE0-FA5A-420F-8328-045C1326253D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C21BE0-FA5A-420F-8328-045C1326253D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C21BE0-FA5A-420F-8328-045C1326253D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C21BE0-FA5A-420F-8328-045C1326253D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F8F23D7-F7D6-4882-8A25-E3EDB451AE36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8F23D7-F7D6-4882-8A25-E3EDB451AE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8F23D7-F7D6-4882-8A25-E3EDB451AE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8F23D7-F7D6-4882-8A25-E3EDB451AE36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43A9DD05-ACC2-4081-AAE7-0FCA0955E916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43A9DD05-ACC2-4081-AAE7-0FCA0955E916}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43A9DD05-ACC2-4081-AAE7-0FCA0955E916}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43A9DD05-ACC2-4081-AAE7-0FCA0955E916}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5B4DC99-D76F-481D-AC32-BF7CDF8E9110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B4DC99-D76F-481D-AC32-BF7CDF8E9110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5B4DC99-D76F-481D-AC32-BF7CDF8E9110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5B4DC99-D76F-481D-AC32-BF7CDF8E9110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6318B504-AB89-4AF7-989D-C4B79B3D1E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6318B504-AB89-4AF7-989D-C4B79B3D1E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6318B504-AB89-4AF7-989D-C4B79B3D1E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6318B504-AB89-4AF7-989D-C4B79B3D1E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34F2595E-916B-4259-B48E-8A297591EB50}
+	EndGlobalSection
+EndGlobal
