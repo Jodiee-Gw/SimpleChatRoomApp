@@ -1,6 +1,8 @@
 ﻿using ClosedXML.Excel;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,52 +14,57 @@ namespace GetInformFromExcel
     {
         static void Main(string[] args)
         {
-            string filePath = @"C:\Users\PC\OneDrive\Desktop\ABC.xlsx"; 
-            string outputPath = @"C:\Users\PC\OneDrive\Desktop\result.txt";  
+            string filePath = @"C:\Users\PC\OneDrive\Desktop\ABC.xlsx";
+            string outputPath = @"C:\Users\PC\OneDrive\Desktop\result.txt";
 
 
-            var excludedAlways = new HashSet<string> { "语言", "类型", "小结" };
-
-            using (var workbook = new XLWorkbook(filePath))
-            using (StreamWriter writer = new StreamWriter(outputPath, false))
+            Console.Write("Nhập số dòng cần đọc: ");
+            if (!int.TryParse(Console.ReadLine(), out int maxRows) || maxRows <= 0)
             {
-                var worksheet = workbook.Worksheet(1);
-                var rows = worksheet.RangeUsed().RowsUsed().ToList();
-
-                var headerRow = rows[0];
-                var dataRows = rows.Skip(1);
-
-                var headers = headerRow.Cells().Select((cell, index) => new
-                {
-                    Name = cell.GetString().Trim(),
-                    Index = index + 1
-                }).ToList();
-
-                int count = 1; 
-
-                foreach (var row in dataRows)
-                {
-                    writer.WriteLine($"========== BÀI SỐ {count} ==========");
-                    foreach (var header in headers)
-                    {
-                        string colName = header.Name;
-                        string value = row.Cell(header.Index).GetString().Trim();
-
-                        if (excludedAlways.Contains(colName))
-                            continue;
-
-                        if (colName == "错误标签" && string.IsNullOrWhiteSpace(value))
-                            continue;
-
-                        writer.WriteLine($"{colName}: {value}");
-                    }
-
-                    writer.WriteLine(new string('-', 80));
-                    count++;
-                }
+                Console.WriteLine("⚠️ Số dòng không hợp lệ!");
+                return;
             }
 
-            Console.WriteLine("✅ Ghi xong file: " + outputPath);
+            var sb = new StringBuilder();
+
+            try
+            {
+                using (var workbook = new XLWorkbook(filePath))
+                {
+                    var sheet = workbook.Worksheet(1); // Lấy sheet đầu tiên
+
+                    int rowCount = Math.Min(maxRows, sheet.LastRowUsed().RowNumber() - 1); // bỏ dòng header
+
+                    for (int row = 2; row < 2 + rowCount; row++) // Bắt đầu từ dòng 2 (bỏ header)
+                    {
+                        string query = sheet.Cell(row, 1).GetString().Trim();
+                        string[] translations = new string[5];
+                        for (int i = 0; i < 5; i++)
+                        {
+                            translations[i] = sheet.Cell(row, i + 2).GetString().Trim();
+                        }
+
+                        sb.AppendLine($"🔎 Query: {query}");
+                        for (int i = 0; i < 5; i++)
+                        {
+                            sb.AppendLine($"译文{i + 1}: {translations[i]}");
+                        }
+                        sb.AppendLine(new string('-', 80));
+                    }
+
+                    File.WriteAllText(outputPath, sb.ToString(), Encoding.UTF8);
+                    Console.WriteLine($"\nĐã xuất thành công {rowCount} dòng vào: {outputPath}");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("❌ Lỗi: " + ex.Message);
+            }
+
+            Console.WriteLine("\nNhấn Enter để thoát...");
+            Console.ReadLine();
+
             Console.ReadLine();
         }
     }
